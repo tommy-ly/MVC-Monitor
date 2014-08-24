@@ -13,15 +13,15 @@ MVC Monitor is an MVC 4 application which can be hosted on any windows machine u
 
 <h4>What can I configure?</h4>
 
-<b>Applications</b>
+*Applications*
 
 MVC-Monitor needs to know which of your applications it will monitor. The app setting in web.config 'Applications' is where you tell it. It is a CSV list of 'sourceId's which you configured in the elmah/error post config value for each of your applications.
 
-<b>Error repository</b>
+*Error repository*
 
 This is where you select which sort of repository is used to store errors. MVC monitor has it's own store for quick access to any errors it receives. Out of the box, MVC monitor is configured to use an in memory repository to store errors. The down side with this method is that the errors are lost if the app pool is restarted. The application can be configured to use an NHibernate repository to persist the errors permanently in a database. 
 
-<b>Configuring the NHibernate/SQL repository</b>
+*Configuring the NHibernate/SQL repository*
 
 To install the database and configure the NHibernate repository:
 * Create two new databases MvcMonitor and MvcMonitorTest, for live and tests.
