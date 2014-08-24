@@ -3,15 +3,15 @@ MVC-Monitor
 
 A tool for reporting unhandled exceptions in real time for MVC applications, includes search/filter functionality and a live dashboard.
 
-<h3>How does it work?</h3>
+<h4>How does it work?</h4>
 
 MVC Monitor can receive errors through the popular error catching tools ELMAH and ElmahR. ELMAH catches any unhandled exceptions just before they get thrown from an MVC applicaiton and reports it. The ElmahR extension then posts a JSON representation of the error to a URL of you choice. MVC monitor can receive the posted error and store it. All the errors MVC monitor receives can be seen arriving in real time on the dashboard or searched through via the index.
 
-<h3>How do I start the monitor?</h3>
+<h4>How do I start the monitor?</h4>
 
 MVC Monitor is an MVC 4 application which can be hosted on any windows machine using IIS. Simply build the solution, check the tests run and host the application on your server or in the cloud.
 
-<h3>What can I configure?</h3>
+<h4>What can I configure?</h4>
 
 <b>Applications</b>
 
