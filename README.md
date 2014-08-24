@@ -5,9 +5,9 @@ A tool for reporting unhandled exceptions in real time for MVC applications, inc
 
 <h2>Setup and configuration</h2>
 
-<b>Error repositories</b>
+<b>Configuring the NHibernate/SQL repository</b>
 
-By default MVC monitor is configured to use an in memory repository to store errors. The down side is that the errors are lost if the app pool is restarted. The applicaiton can be configured to use an NHibernate repository to persist the errors in a database.
+By default MVC monitor is configured to use an in memory repository to store errors. The down side is that the errors are lost if the app pool is restarted. The application can be configured to use an NHibernate repository to persist the errors in a database.
 
 To install the database and configure the NHibernate repository:
 * Create two new databases MvcMonitor and MvcMonitorTest, for live and tests.
