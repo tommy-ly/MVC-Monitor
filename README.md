@@ -43,10 +43,6 @@ To get you application posting its errors to the monitor:
 
 * Create a new or open an existing MVC application
 * In the Nuget package manager install Elmah.MVC and ElmahR.Elmah
-* The following config will be added to the web.config file:
-** A section group named elmah
-** appSettings all prefixed with elmah.mvc.
-** Elmah http modules under system.web
-** An elmah section including errorLog and errorPost elements
+* The following config will be added to the web.config file: a section group named elmah, appSettings all prefixed with elmah.mvc, Elmah http modules under system.web, Elmah http modules under system.webserver, and an elmah section including errorLog and errorPost elements.
 * You need to change the errorPost elements targetUrl to point to the monitor (if running locally it is http://localhost:55555 by default)
 * You also need to give it a sourceId e.g. 'MyApp1'. This needs to be added to the csv list of applications on the MVC Monitor web.config
