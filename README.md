@@ -3,7 +3,7 @@ MVC-Monitor
 
 A tool for reporting unhandled exceptions in real time for MVC applications, includes search/filter functionality and a live dashboard.
 
-<h2>How do I start it?</h2>
+<h3>How do I start it?</h3>
 
 MVC Monitor is an MVC 4 application which can be hosted on any windows machine using IIS. Simply build the solution, check the tests run and host the application on your server or in the cloud.
 
