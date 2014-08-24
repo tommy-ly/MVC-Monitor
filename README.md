@@ -3,7 +3,8 @@ MVC-Monitor
 
 A tool for reporting unhandled exceptions in real time for MVC applications, includes search/filter functionality and a live dashboard.
 
-<h2>Configuration</h2>
+<h2>Installation</h2>
+<h3>Configuration</h3>
 
 <b>Applications</b>
 
