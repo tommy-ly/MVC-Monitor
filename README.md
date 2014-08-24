@@ -9,7 +9,7 @@ MVC Monitor can receive errors through the popular error catching tools ELMAH an
 
 <h4>Do I need to modify my applications?</h4>
 
-As you've probably guessed, you will need to install ELMAH and ElmahR into you MVC applications. But that's cool, it's really straight forward and only involves config changes. See the section at the end of the readme for a step by step guide to get your application barfing out it's unhandled exceptions.
+As you've probably guessed, you will need to install ELMAH and ElmahR into you MVC applications. But don't fret, it's really straight forward and only involves a nuget install and some extra config settings. See the section at the end of the readme for a step by step guide to get your application barfing out it's unhandled exceptions to the monitor.
 
 <h4>Sorted, so how do I start the monitor?</h4>
 
