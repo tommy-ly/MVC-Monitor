@@ -49,3 +49,5 @@ To get you application posting its errors to the monitor:
 
 And that's it! Rebuild you application and make it throw an unhandled exception. This should get posted to the MVC monitor.
 
+It's worth noting that this is only a basic install of ELMAH, including receiving notifications via Prowl and setting up filters to stop certain errors getting posted. See the wiki for details https://code.google.com/p/elmah/w/list 
+
