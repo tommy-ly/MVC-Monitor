@@ -1,21 +1,25 @@
 MVC-Monitor
 ===========
 
-A tool for reporting unhandled exceptions in real time for MVC applications, includes search/filter functionality and a live dashboard.
+A tool for reporting unhandled exceptions in real time for ASP.NET MVC applications, including search/filter functionality and a live dashboard.
 
 <h4>How does it work?</h4>
 
 MVC Monitor can receive errors through the popular error catching tools ELMAH and ElmahR. ELMAH catches any unhandled exceptions just before they get thrown from an MVC applicaiton and reports it. The ElmahR extension then posts a JSON representation of the error to a URL of you choice. MVC monitor can receive the posted error and store it. All the errors MVC monitor receives can be seen arriving in real time on the dashboard or searched through via the index.
 
-<h4>How do I start the monitor?</h4>
+<h4>Do I need to modify my applications?</h4>
 
-MVC Monitor is an MVC 4 application which can be hosted on any windows machine using IIS. Simply build the solution, check the tests run and host the application on your server or in the cloud.
+As you've probably guessed, you will need to install ELMAH and ElmahR into you MVC applications. But that's cool, it's really straight forward and only involves config changes. See the section at the end of the readme for a step by step guide to get your application barfing out it's unhandled exceptions.
+
+<h4>Sorted, so how do I start the monitor?</h4>
+
+MVC Monitor is an MVC 4 application which can be hosted on any windows machine using IIS. Simply build the solution, check the unit tests pass and host the application on your server or in the cloud.
 
 <h4>What can I configure?</h4>
 
 *Applications*
 
-MVC-Monitor needs to know which of your applications it will monitor. The app setting in web.config 'Applications' is where you tell it. It is a CSV list of 'sourceId's which you configured in the elmah/error post config value for each of your applications.
+MVC-Monitor needs to know which of your applications it will monitor. The app setting in web.config 'Applications' is where you tell it. It is a CSV list of 'sourceId's which you configured in the elmah/error post config value for each of your applications. *N.B. Any errors coming from a sourceId not in this list will be ignored*
 
 *Error repository*
 
