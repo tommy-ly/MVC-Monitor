@@ -35,3 +35,11 @@ To install the database and configure the NHibernate repository:
 * In the test project open hibernate.cfg.xml and change the connection.connection_string property to point to the test database (MvcMonitorTest)
 * Unignore all the tests under MvcMonitor.Tests/Repositories/NhibernateRepositoryTests
 * All the unit tests should now pass and the applicaiton will save all it's data to the database
+
+
+<h4>So about installing ELMAH into my MVC application...</h4>
+
+To get you application posting its errors to the monitor:
+
+* Create a new or open an existing MVC application
+* In the Nuget package manager install 
