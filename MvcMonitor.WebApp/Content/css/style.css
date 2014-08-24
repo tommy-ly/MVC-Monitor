@@ -1,0 +1,285 @@
+﻿body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #EAEAEA;
+    background-color: #000;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1d1a15), color-stop(100%,#000000));
+    padding: 8px;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+h3 {
+    text-indent: 4px;
+    margin-top: 4px;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style-type: none;
+    -webkit-padding-start: 0;
+    margin-top: 0;
+}
+
+td {
+    font-size: 0.9em;
+    padding: 0;
+}
+
+th {
+    font-size: 1em;
+    padding: 0;
+    font-weight: bold;
+}
+
+#dashboardHolder {
+    width: 100%;
+    height: 42px;
+    margin-bottom: 12px;
+    background: #3b2f4d; /* Old browsers */
+    background: -moz-linear-gradient(top, #3b2f4d 0%, #423456 12%, #3d314f 24%, #392e4a 33%, #2b2238 52%, #2b2238 56%, #201a2a 78%, #231c2e 91%, #1e1828 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3b2f4d), color-stop(12%,#423456), color-stop(24%,#3d314f), color-stop(33%,#392e4a), color-stop(52%,#2b2238), color-stop(56%,#2b2238), color-stop(78%,#201a2a), color-stop(91%,#231c2e), color-stop(100%,#1e1828)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #3b2f4d 0%,#423456 12%,#3d314f 24%,#392e4a 33%,#2b2238 52%,#2b2238 56%,#201a2a 78%,#231c2e 91%,#1e1828 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #3b2f4d 0%,#423456 12%,#3d314f 24%,#392e4a 33%,#2b2238 52%,#2b2238 56%,#201a2a 78%,#231c2e 91%,#1e1828 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #3b2f4d 0%,#423456 12%,#3d314f 24%,#392e4a 33%,#2b2238 52%,#2b2238 56%,#201a2a 78%,#231c2e 91%,#1e1828 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #3b2f4d 0%,#423456 12%,#3d314f 24%,#392e4a 33%,#2b2238 52%,#2b2238 56%,#201a2a 78%,#231c2e 91%,#1e1828 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b2f4d', endColorstr='#1e1828',GradientType=0 ); /* IE6-9 */
+}
+
+.dashboardTitle {
+    float: left;
+    margin-top: 11px;
+    margin-left: 12px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.dashboardError {
+    padding: 9px;
+    margin-left: 17px;
+    margin-right: 17px;
+    text-align: center;
+    font-weight: bold;
+    color: #500;
+    font-size: 1.3em;
+}
+
+.lastUpdatedText {
+    float: right;
+    font-size: 0.9em;
+    margin-top: 12px;
+    margin-right: 15px;
+}
+
+.column {
+    width: 370px;
+    float: left;
+    margin-left: 15px;
+}
+
+.column2 {
+    width: 850px;
+    float: left;
+    margin-left: 15px;
+}
+
+.latestErrorsColumn {
+    width: 420px;
+}
+
+.errorFeedBackground {
+    background-color: #523170;
+    margin-top: 10px;
+    padding: 15px;
+}
+
+.lastErrorContainer {
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #C4DE56;
+}
+
+.lastErrorDisplayList li {
+    margin-top: 1px;
+}
+
+.lastErrorAppTitle {
+    font-size: 1em;
+    font-variant: small-caps;
+    text-transform: capitalize;
+}
+
+.lastErrorType {
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.lastErrorLabel {
+    font-size: 0.7em;
+}
+
+.lastError {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.appErrorSummary {
+    background-color: #c3c33c;
+    padding: 10px;
+    margin: 3px;
+    color: #222222;
+    font-size: 0.9em;
+}
+
+.appErrorSummaryAll {
+    background-color: #FF6;
+}
+
+.appErrorSummary li {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.errorSummaryTitle {
+    font-weight: bold;
+    font-size: 1.8em;
+    font-variant: small-caps;
+    text-transform: capitalize;
+}
+
+.errorSummaryCount {
+    text-align: right;
+    font-size: 4.5em;
+    font-style: italic;
+    font-weight: bold;
+    float: right;
+    clear: right;
+}
+
+.index-display-count {
+    font-size: 17.5px;
+    font-weight: bold;
+    float: left;
+    margin-left: 10px;
+    margin-top: 8px;
+}
+
+.paging-control {
+    text-align: right;
+}
+
+.index-area {
+    width: 60%;
+    float: left;
+}
+
+.header-link {
+    margin-top: 5px;
+}
+
+.header-link-holder {
+    margin-left: 20px;
+}
+
+.table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
+    padding-left: 2px;
+    padding-right: 2px;
+    font-size: 0.8em;
+}
+
+.table thead > tr > th {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.table tbody > tr > td {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.error-detail {
+    float: left;
+    width: 40%;
+    font-size: 0.85em;
+}
+
+.paging-page-number {
+    width: 40px;
+    float: left;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.error-panel-half {
+    width: 50%;
+    float: left;
+    padding: 3px;
+}
+
+.detail-label {
+    font-weight: bold;
+}
+
+.stack-trace {
+    color: #222222;
+    border-radius: 4px;
+    background: #c3c33c;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 11px;
+}
+
+.stack-trace p {
+    margin-bottom: 0;
+}
+
+.error-panel-row {
+    margin: 3px;
+}
+
+.filter-element {
+    display: inline-block;
+    margin-left: 0;
+    margin-right: 15px;
+}
+
+.filter-element input {
+    width: 150px;
+}
+
+.filter-element label {
+    text-align: right;
+}
+
+.btn-filter-update {
+    float: right;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.error-list-panel {
+    padding: 5px;
+    background-color: #3e444c;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 0;
+    border-radius: 4px;
+}
+
+.panel-heading {
+    font-size: 1.1em;
+    padding: 6px 8px;
+    font-weight: bold;
+}
+
+.panel-capital {
+    text-transform: capitalize;
+}
