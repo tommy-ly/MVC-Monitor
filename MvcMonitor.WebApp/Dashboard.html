@@ -38,7 +38,7 @@
                     <span class="errorSummaryCount">{{applicationsSummary.TotalCount}}</span>
                     <ul>
                         <li class="errorSummaryTitle">All</li>
-                        <li>Latest: {{applicationsSummary.LatestError.ExceptionType}}</li>
+                        <li>Latest: {{applicationsSummary.LatestError.ExceptionType | limitTo: 30 }}{{applicationsSummary.LatestError.ExceptionType.length > 30 ? '...' : ''}}</li>
                         <li>Application: {{applicationsSummary.LatestError.Application}}</li>
                         <li>When: {{applicationsSummary.LatestError.Time | parseAsDate | date:'dd-MM-yyyy HH:mm'}}</li>
                     </ul>
@@ -50,7 +50,7 @@
                     <span class="errorSummaryCount">{{summary.ErrorCount}}</span>
                     <ul>
                         <li class="errorSummaryTitle">{{summary.Application}}</li>
-                        <li>Latest: {{summary.LatestErrorType}}</li>
+                        <li>Latest: {{summary.LatestErrorType | limitTo: 30 }}{{summary.LatestErrorType.length > 30 ? '...' : ''}}</li>
                         <li>When: {{summary.Latest | parseAsDate | date:'dd-MM-yyyy HH:mm'}}</li>
                     </ul>
                 </div>
