@@ -32,25 +32,7 @@
                         maxShowing = pagedErrors.TotalCount;
                     }
 
-                    $scope.showing = ((pagedErrors.Page) * pagedErrors.PageSize) + ' to ' + maxShowing;
-
-                    $scope.pagedErrors = pagedErrors;
-                    $scope.currentPage = currentPage;
-                });
-            });
-    };
-
-    var refreshOnInputStopped = function() {
-        proxy.server.getPagedErrors(currentPage, pageSize, $scope.filterFrom, $scope.filterTo, $scope.filterUser, $scope.filterApplication, $scope.filterLocation)
-            .done(function (pagedErrors) {
-                $scope.$apply(function () {
-                    var maxShowing = ((pagedErrors.Page + 1) * pagedErrors.PageSize);
-
-                    if (maxShowing > pagedErrors.TotalCount) {
-                        maxShowing = pagedErrors.TotalCount;
-                    }
-
-                    $scope.showing = ((pagedErrors.Page) * pagedErrors.PageSize) + ' to ' + maxShowing;
+                    $scope.showing = ((pagedErrors.Page - 1) * pagedErrors.PageSize) + ' to ' + maxShowing;
 
                     $scope.pagedErrors = pagedErrors;
                     $scope.currentPage = currentPage;
@@ -78,7 +60,6 @@
             $scope.filterApplication = "";
 
             $scope.refresh = refresh;
-            $scope.refreshOnInputStopped = refreshOnInputStopped;
 
             connected = true;
             refresh();
