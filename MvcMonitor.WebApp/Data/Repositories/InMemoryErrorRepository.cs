@@ -41,7 +41,10 @@ namespace MvcMonitor.Data.Repositories
             var errorsWithFilter = Errors.OrderByDescending(error => error.Time)
                 .Where(error => ContainsInsensitive(error.Application, applicationName)
                                 && ContainsInsensitive(error.Username, username)
-                                && error.ExceptionLocations.Any(exceptionLocation => ContainsInsensitive(exceptionLocation, location))
+                                && (error.ExceptionLocations.Any(exceptionLocation => ContainsInsensitive(exceptionLocation, location))
+                                     || ContainsInsensitive(error.ExceptionType, location)
+                                     || ContainsInsensitive(error.ExceptionMessage, location)
+                                     || ContainsInsensitive(error.ExceptionStackTrace, location))
                                 && error.Time >= @from
                                 && error.Time <= @to);
 
