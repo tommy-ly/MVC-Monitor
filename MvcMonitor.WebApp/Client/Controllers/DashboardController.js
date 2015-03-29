@@ -1,4 +1,4 @@
-﻿app.controller('ApplicationErrorSummaryCtrl', function($scope) {
+﻿angular.module('mvc-monitor').controller('ApplicationErrorSummaryCtrl', function ($scope) {
     var signalrConnectionStates = { 0: 'Connecting', 1: 'Connected', 2: 'Reconnecting', 4: 'Disconnected' };
 
     var proxy = $.connection.showcaseErrorHub;

@@ -1,4 +1,4 @@
-﻿app.controller('ErrorIndexCtrl', function($scope, $filter) {
+﻿angular.module('mvc-monitor').controller('ErrorIndexCtrl', function ($scope, $filter) {
     var connected = false;
 
     var proxy;

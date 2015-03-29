@@ -73,9 +73,9 @@
                             <td><div>{{error.Application}}</div></td>
                             <td><div>{{error.Host}}</div></td>
                             <td><div>{{error.StatusCode}}</div></td>
-                            <td><div>{{error.ExceptionType  |  trim:false:30:'...'}}</div></td>
+                            <td><div>{{error.ExceptionType | limitTo: 30}}{{error.ExceptionType.length > 30 ? '...' : ''}}</div></td>
                             <td><div>{{error.Username}}</div></td>
-                            <td><div>{{error.Url |  trim:false:30:'...'}}</div></td>
+                            <td><div>{{error.Url | limitTo: 30}}{{error.Url.length > 30 ? '...' : ''}}</div></td>
                         </tr>
                     </tbody>
                 </table>
@@ -226,7 +226,10 @@
     <script src="/Scripts/bootstrap.js"></script>
     <script src="/signalr/hubs"></script>
 
-    <script src="app.js"></script>
-    <script src="/Client/ErrorIndexCtrl.js"></script>
+    <script src="/Client/app.js"></script>
+    <script src="/Client/Controllers/ErrorListingController.js"></script>
+    <script src="/Client/Directives/NgEnter.js"></script>
+    <script src="/Client/Directives/Datepicker.js"></script>
+    <script src="/Client/Directives/ParseAsDate.js"></script>
 </body>
 </html>
