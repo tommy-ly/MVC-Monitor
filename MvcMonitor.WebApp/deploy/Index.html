@@ -1,0 +1,235 @@
+﻿<html ng-app="mvc-monitor">
+<head>
+    <title>MVC Monitor</title>
+    <link rel="stylesheet" href="Content/css/bootstrap.css" />
+    <link rel="stylesheet" href="Content/css/style.css" />
+    <link rel="stylesheet" href="Content/themes/base/jquery-ui.css" />
+</head>
+
+<body ng-controller="ErrorIndexCtrl">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <span class="navbar-brand">MVC Monitor</span>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="./dashboard.html">Dashboard</a></li>
+                <li class="active"><a href="./index.html">Index</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="index-area">
+        <div class="panel panel-default">
+            <div class="panel-heading"><span class="panel-capital">Application Errors</span> - Showing {{showing}} of {{pagedErrors.TotalCount}}</div>
+
+            <div class="panel-body">
+                <div class="filter-element">
+                    <label>From</label>
+                    <input id="filter-date-from" type="text" value="{{filterFrom}}" placeholder="From" ng-change="refresh()" ng-model="filterFrom" datepicker />
+                </div>
+
+                <div class="filter-element">
+                    <label>To</label>
+                    <input id="filter-date-to" type="text" value="{{filterTo}}" placeholder="To" ng-change="refresh()" ng-model="filterTo" datepicker />
+                </div>
+
+                <div class="filter-element">
+                    <label>Location</label>
+                    <input id="filter-location" type="text" value="{{filterLocation}}" placeholder="Location" ng-enter="refresh()" ng-model="filterLocation" />
+                </div>
+
+                <div class="filter-element">
+                    <label>User</label>
+                    <input id="filter-user" type="text" value="{{filterUser}}" placeholder="Username" ng-enter="refresh()" ng-model="filterUser" />
+                </div>
+
+                <div class="filter-element">
+                    <label>Application</label>
+                    <input id="filter-application" type="text" value="{{filterApplication}}" placeholder="Application" ng-enter="refresh()" ng-model="filterApplication" />
+                </div>
+            </div>
+            <div class="error-list-panel">
+                <table id="tbl-error-index" class="table table-striped table-hover">
+                    <thead>
+                    <th style="width: 140px;">Time</th>
+                    <th style="width:100px">Application</th>
+                    <th style="width:110px">Host</th>
+                    <th>Status Code</th>
+                    <th style="width:215px;">Type</th>
+                    <th style="width: 200px;">User</th>
+                    <th>Url</th>
+                    </thead>
+                    <tbody>
+                        <tr class="clickable" ng-repeat="error in pagedErrors.Items" ng-click="errorSelected(error)">
+                            <td><div>{{error.Time | parseAsDate | date: 'dd/MM/yyyy HH:mm'}}</div></td>
+                            <td><div>{{error.Application}}</div></td>
+                            <td><div>{{error.Host}}</div></td>
+                            <td><div>{{error.StatusCode}}</div></td>
+                            <td><div>{{error.ExceptionType | limitTo: 30}}{{error.ExceptionType.length > 30 ? '...' : ''}}</div></td>
+                            <td><div>{{error.Username}}</div></td>
+                            <td><div>{{error.Url | limitTo: 30}}{{error.Url.length > 30 ? '...' : ''}}</div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <span>
+            <div class="paging-control">
+                <ul class="pagination pagination-sm">
+                    <li><a class="clickable" ng-click="prevPage()">&laquo;</a></li>
+                    <li><span>Page {{currentPage}}</span></li>
+                    <li><a class="clickable" ng-click="nextPage()">&raquo;</a></li>
+                </ul>
+            </div>
+        </span>
+    </div>
+
+    <div class="error-detail">
+
+        <div class="panel panel-default">
+            <div class="panel-heading"><span class="panel-capital">{{selectedError.Application}}</span>: {{selectedError.Time | date:'medium'}}</div>
+            <div class="panel-body">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Error</div>
+                    <div class="panel-body">
+                        <div id="application-host" class="error-panel-row">
+                            <div class="error-panel-half">
+                                <span class="detail-label">Application:</span>
+                                <span>{{selectedError.Application}}</span>
+                            </div>
+
+                            <div class="error-panel-half">
+                                <span class="detail-label">Host:</span>
+                                <span>{{selectedError.Host}}</span>
+                            </div>
+                        </div>
+
+                        <div id="username-time" class="error-panel-row">
+                            <div class="error-panel-half">
+                                <span class="detail-label">User:</span>
+                                <span>{{selectedError.Username}}</span>
+                            </div>
+
+                            <div class="error-panel-half">
+                                <span class="detail-label">Time:</span>
+                                <span>{{selectedError.Time | parseAsDate | date: 'dd/MM/yyyy HH:mm'}}</span>
+                            </div>
+                        </div>
+
+                        <div id="url" class="error-panel-row">
+                            <span class="detail-label">Url:</span>
+                            <span>{{selectedError.Url}}</span>
+                        </div>
+
+                        <div id="query-string" class="error-panel-row">
+                            <span class="detail-label">Query string:</span>
+                            <span>{{selectedError.QueryString}}</span>
+                        </div>
+
+                        <div id="status-method" class="error-panel-row">
+                            <div class="error-panel-half">
+                                <span class="detail-label">Http Status Code:</span>
+                                <span>{{selectedError.StatusCode}}</span>
+                            </div>
+
+                            <div class="error-panel-half">
+                                <span class="detail-label">Request Method:</span>
+                                <span>{{selectedError.RequestMethod}}</span>
+                            </div>
+                        </div>
+
+                        <div id="user-agent" class="error-panel-row">
+                            <span class="detail-label">Browser Agent:</span>
+                            <span>{{selectedError.UserAgent}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">Exception</div>
+
+                    <div class="panel-body">
+                        <div id="type" class="error-panel-row">
+                            <span class="detail-label">Type:</span>
+                            <span>{{selectedError.ExceptionType}}</span>
+                        </div>
+
+                        <div id="message" class="error-panel-row">
+                            <span class="detail-label">Message:</span>
+                            <span>{{selectedError.ExceptionMessage}}</span>
+                        </div>
+
+                        <div id="source" class="error-panel-row">
+                            <span class="detail-label">Source:</span>
+                            <span>{{selectedError.ExceptionSource}}</span>
+                        </div>
+
+                        <div id="stacktrace" class="error-panel-row">
+                            <span class="detail-label">Stack Trace:</span>
+                            <div class="stack-trace">{{selectedError.ExceptionStackTrace}}</div>
+                        </div>
+
+                        <div id="locations" class="error-panel-row">
+                            <span class="detail-label">Local Locations:</span>
+                            <div class="stack-trace">
+                                <p ng-repeat="location in selectedError.ExceptionLocations">{{location}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">Server</div>
+                    <div class="panel-body">
+                        <div id="name-port" class="error-panel-row">
+                            <div class="error-panel-half">
+                                <span class="detail-label">Server:</span>
+                                <span>{{selectedError.ServerName}}</span>
+                            </div>
+
+                            <div class="error-panel-half">
+                                <span class="detail-label">Port:</span>
+                                <span>{{selectedError.ServerPort}}</span>
+                            </div>
+                        </div>
+
+                        <div id="path" class="error-panel-row">
+                            <span class="detail-label">Application Path:</span>
+                            <span>{{selectedError.ServerApplicationPath}}</span>
+                        </div>
+
+                        <div id="translated" class="error-panel-row">
+                            <span class="detail-label">Path Translated:</span>
+                            <span>{{selectedError.ServerApplicationPathTranslated}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/Scripts/jquery-2.0.2.min.js"></script>
+    <script src="/Scripts/jquery-ui-1.10.3.js"></script>
+    <script src="/Scripts/angular.js"></script>
+
+    <script src="/Scripts/jquery.signalR-1.1.2.js"></script>
+    <script src="/Scripts/bootstrap.js"></script>
+    <script src="/signalr/hubs"></script>
+
+    <script src="/Client/app.js"></script>
+    <script src="/Client/Controllers/ErrorListingController.js"></script>
+    <script src="/Client/Directives/NgEnter.js"></script>
+    <script src="/Client/Directives/Datepicker.js"></script>
+    <script src="/Client/Directives/ParseAsDate.js"></script>
+</body>
+</html>
