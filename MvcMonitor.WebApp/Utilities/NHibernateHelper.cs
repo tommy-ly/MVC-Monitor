@@ -24,7 +24,7 @@ namespace MvcMonitor.Utilities
 
         public static ISession OpenSession()
         {
-            return SessionFactory.OpenSession();
+            return SessionFactory.OpenSession(); 
         }
     }
 }
