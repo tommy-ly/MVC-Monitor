@@ -190,6 +190,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppSettings.aspx.cs">
+      <DependentUpon>AppSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppSettings.aspx.designer.cs">
+      <DependentUpon>AppSettings.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Data\Repositories\ErrorRepositoryLocator.cs" />
     <Compile Include="ErrorHandling\IErrorDataFactory.cs" />
     <Compile Include="Models\ErrorLocationModel.cs" />
@@ -244,6 +251,7 @@
     <Compile Include="Utilities\NHibernateHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AppSettings.aspx" />
     <Content Include="Client\app.js" />
     <Content Include="Client\Controllers\DashboardController.js" />
     <Content Include="Client\Controllers\ErrorListingController.js" />
