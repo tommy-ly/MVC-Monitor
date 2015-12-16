@@ -82,9 +82,12 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
 IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 3. Run Unit Tests
+echo Running unit tests
 
 call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\MvcMonitor.Tests\MvcMonitor.Tests.csproj" /nologo /verbosity:m /t:Build /p:AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release /p:SolutionDir="%DEPLOYMENT_SOURCE%\.\\" %SCM_BUILD_ARGS%
 call :ExecuteCmd "%DEPLOYMENT_SOURCE%\tools\nunit-console.exe" "%DEPLOYMENT_SOURCE%\MvcMonitor.Tests\bin\Release\MvcMonitor.Tests.dll"
+
+IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 4. KuduSync
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
