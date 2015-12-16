@@ -48,7 +48,7 @@ namespace MvcMonitor.Tests.Models
             Assert.That(serverVariables.REMOTE_ADDR, Is.EqualTo("127.0.0.1"));
             Assert.That(serverVariables.REMOTE_HOST, Is.EqualTo("127.0.0.1"));
             Assert.That(serverVariables.REQUEST_METHOD, Is.EqualTo("GET"));
-            Assert.That(serverVariables.SCRIPT_NAME, Is.EqualTo("/Not/Foundz"));
+            Assert.That(serverVariables.SCRIPT_NAME, Is.EqualTo("/Not/Found"));
             Assert.That(serverVariables.SERVER_NAME, Is.EqualTo("localhost"));
             Assert.That(serverVariables.SERVER_PORT, Is.EqualTo("1685"));
             Assert.That(serverVariables.SERVER_PORT_SECURE, Is.EqualTo("0"));
