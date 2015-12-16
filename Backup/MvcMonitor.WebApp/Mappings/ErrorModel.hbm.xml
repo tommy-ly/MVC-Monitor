@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="MvcMonitor"
+                   namespace="MvcMonitor.Models">
+
+  <class name="ErrorModel">
+    <id name="Id">
+      <generator class="guid" />
+    </id>
+    <property name="ErrorId" />
+    <property name="Application" />
+    <property name="Time" />
+    <property name="Username" />
+    <property name="Host" />
+    <property name="Url" />
+    <property name="StatusCode" />
+    <property name="RequestMethod" />
+    <property name="UserAgent" />
+    
+    <property name="ExceptionType" />
+    <property name="ExceptionMessage" />
+    <property name="ExceptionSource" />
+    <property name="ExceptionStackTrace" type="string" length="7000" />
+    
+    <property name="ServerName" />
+    <property name="ServerPort" />
+    <property name="ServerPortSecure" />
+    <property name="ServerApplicationPath" />
+    <property name="ServerApplicationPathTranslated" />
+    <property name="QueryString" />
+  </class>
+  
+</hibernate-mapping>
