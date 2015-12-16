@@ -79,10 +79,14 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
 ) ELSE (
   call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\MvcMonitor.WebApp\MvcMonitor.csproj" /nologo /verbosity:m /t:Build /p:AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release;UseSharedCompilation=false /p:SolutionDir="%DEPLOYMENT_SOURCE%\.\\" %SCM_BUILD_ARGS%
 )
-
 IF !ERRORLEVEL! NEQ 0 goto error
 
-:: 3. KuduSync
+:: 3. Run Unit Tests
+
+call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\MvcMonitor.Tests\MvcMonitor.Tests.csproj" /nologo /verbosity:m /t:Build /p:AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release /p:SolutionDir="%DEPLOYMENT_SOURCE%\.\\" %SCM_BUILD_ARGS%
+call :ExecuteCmd "%DEPLOYMENT_SOURCE%\tools\nunit-console.exe" "%DEPLOYMENT_SOURCE%\MvcMonitor.Tests\bin\Release\MvcMonitor.Tests.dll"
+
+:: 4. KuduSync
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
   call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_TEMP%" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
   IF !ERRORLEVEL! NEQ 0 goto error
